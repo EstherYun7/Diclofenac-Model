@@ -1,0 +1,621 @@
+{
+  "Version": 76,
+  "Individuals": [
+    {
+      "Name": "Adult",
+      "Seed": 9538718,
+      "OriginData": {
+        "CalculationMethods": [
+          "SurfaceAreaPlsInt_VAR1",
+          "Body surface area - Mosteller"
+        ],
+        "Species": "Human",
+        "Population": "European_ICRP_2002",
+        "Gender": "MALE",
+        "Age": {
+          "Value": 30.0,
+          "Unit": "year(s)"
+        }
+      },
+      "Molecules": [
+        {
+          "Name": "CYP2C9",
+          "Type": "Enzyme",
+          "MembraneLocation": "Apical",
+          "TissueLocation": "Intracellular",
+          "IntracellularVascularEndoLocation": "Endosomal",
+          "Expression": [
+            {
+              "Name": "Brain",
+              "Value": 0.00039687350455
+            },
+            {
+              "Name": "Gonads",
+              "Value": 4.5940341362E-05
+            },
+            {
+              "Name": "Kidney",
+              "Value": 0.0018822778753
+            },
+            {
+              "Name": "Periportal",
+              "Value": 1.0
+            },
+            {
+              "Name": "Pericentral",
+              "Value": 1.0
+            },
+            {
+              "Name": "Lung",
+              "Value": 0.0002131121391
+            },
+            {
+              "Name": "SmallIntestine",
+              "Value": 0.1199553358
+            },
+            {
+              "Name": "Duodenum",
+              "Value": 0.1199553358
+            },
+            {
+              "Name": "UpperJejunum",
+              "Value": 0.1199553358
+            },
+            {
+              "Name": "LowerJejunum",
+              "Value": 0.1199553358
+            },
+            {
+              "Name": "UpperIleum",
+              "Value": 0.1199553358
+            },
+            {
+              "Name": "LowerIleum",
+              "Value": 0.1199553358
+            }
+          ],
+          "Ontogeny": {
+            "Name": "CYP2C9"
+          }
+        }
+      ]
+    }
+  ],
+  "Compounds": [
+    {
+      "Name": "Diclofenac",
+      "IsSmallMolecule": true,
+      "PlasmaProteinBindingPartner": "Albumin",
+      "Lipophilicity": [
+        {
+          "Name": "Measurement",
+          "Parameters": [
+            {
+              "Name": "Lipophilicity",
+              "Value": 1.35,
+              "Unit": "Log Units"
+            }
+          ]
+        }
+      ],
+      "FractionUnbound": [
+        {
+          "Name": "Measurement",
+          "Species": "Human",
+          "Parameters": [
+            {
+              "Name": "Fraction unbound (plasma, reference value)",
+              "Value": 0.003
+            }
+          ]
+        }
+      ],
+      "Solubility": [
+        {
+          "Name": "Measurement",
+          "Parameters": [
+            {
+              "Name": "Solubility at reference pH",
+              "Value": 2.37,
+              "Unit": "mg/l"
+            },
+            {
+              "Name": "Reference pH",
+              "Value": 7.0
+            }
+          ]
+        }
+      ],
+      "PkaTypes": [
+        {
+          "Type": "Acid",
+          "Pka": 4.0,
+          "ValueOrigin": {
+            "Source": "Unknown"
+          }
+        }
+      ],
+      "Processes": [
+        {
+          "InternalName": "MetabolizationIntrinsic_FirstOrder",
+          "DataSource": "CYP2C9",
+          "Species": "Human",
+          "Molecule": "CYP2C9",
+          "Parameters": [
+            {
+              "Name": "Intrinsic clearance",
+              "Value": 0.0,
+              "Unit": "l/min"
+            },
+            {
+              "Name": "Specific clearance",
+              "Value": 460.04,
+              "Unit": "1/min",
+              "ValueOrigin": {
+                "Source": "Unknown"
+              }
+            }
+          ]
+        }
+      ],
+      "CalculationMethods": [
+        "Cellular partition coefficient method - PK-Sim Standard",
+        "Cellular permeability - PK-Sim Standard"
+      ],
+      "Parameters": [
+        {
+          "Name": "Cl",
+          "Value": 2.0,
+          "ValueOrigin": {
+            "Source": "Unknown"
+          }
+        },
+        {
+          "Name": "Molecular weight",
+          "Value": 298.15,
+          "Unit": "g/mol"
+        }
+      ]
+    }
+  ],
+  "Protocols": [
+    {
+      "Name": "Adult_IV_Willis 1979",
+      "ApplicationType": "IntravenousBolus",
+      "DosingInterval": "Single",
+      "Parameters": [
+        {
+          "Name": "InputDose",
+          "Value": 50.0,
+          "Unit": "mg"
+        }
+      ]
+    },
+    {
+      "Name": "IV_inf_Adult_Mermelstein_2013",
+      "ApplicationType": "Intravenous",
+      "DosingInterval": "Single",
+      "Parameters": [
+        {
+          "Name": "InputDose",
+          "Value": 75.0,
+          "Unit": "mg"
+        },
+        {
+          "Name": "Infusion time",
+          "Value": 30.0,
+          "Unit": "min"
+        }
+      ]
+    }
+  ],
+  "Simulations": [
+    {
+      "Name": "IVsim-Adult-Willis-1979",
+      "Model": "4Comp",
+      "ObservedData": [
+        "Willis_1979_Adults_IV"
+      ],
+      "Solver": {},
+      "OutputSchema": [
+        {
+          "Parameters": [
+            {
+              "Name": "Start time",
+              "Value": 0.0,
+              "Unit": "h"
+            },
+            {
+              "Name": "End time",
+              "Value": 2.0,
+              "Unit": "h"
+            },
+            {
+              "Name": "Resolution",
+              "Value": 20.0,
+              "Unit": "pts/h"
+            }
+          ]
+        }
+      ],
+      "OutputSelections": [
+        "Organism|PeripheralVenousBlood|Diclofenac|Plasma (Peripheral Venous Blood)"
+      ],
+      "Individual": "Adult",
+      "Compounds": [
+        {
+          "Name": "Diclofenac",
+          "CalculationMethods": [
+            "Cellular partition coefficient method - Rodgers and Rowland",
+            "Cellular permeability - PK-Sim Standard"
+          ],
+          "Processes": [
+            {
+              "Name": "CYP2C9-CYP2C9",
+              "MoleculeName": "CYP2C9"
+            }
+          ],
+          "Protocol": {
+            "Name": "Adult_IV_Willis 1979"
+          }
+        }
+      ],
+      "HasResults": true,
+      "IndividualAnalyses": [
+        {
+          "Axes": [
+            {
+              "Unit": "h",
+              "Dimension": "Time",
+              "Type": "X",
+              "GridLines": false,
+              "Visible": true,
+              "DefaultColor": "#FFFFFF",
+              "DefaultLineStyle": "None",
+              "Scaling": "Linear",
+              "NumberMode": "Normal"
+            },
+            {
+              "Unit": "µmol/l",
+              "Dimension": "Concentration (molar)",
+              "Type": "Y",
+              "GridLines": false,
+              "Visible": true,
+              "DefaultColor": "#FFFFFF",
+              "DefaultLineStyle": "Solid",
+              "Scaling": "Log",
+              "NumberMode": "Normal"
+            }
+          ],
+          "Curves": [
+            {
+              "Name": "IVsim-Adult-Willis-1979-Diclofenac-Peripheral Venous Blood-Plasma-Concentration",
+              "X": "Time",
+              "Y": "IVsim-Adult-Willis-1979|Organism|PeripheralVenousBlood|Diclofenac|Plasma (Peripheral Venous Blood)",
+              "CurveOptions": {
+                "Color": "#FF0000",
+                "LegendIndex": 1
+              }
+            },
+            {
+              "Name": "Willis_1979_Adults_IV-Diclofenac-Peripheral Venous Blood-Plasma-Conc ",
+              "X": "Willis_1979_Adults_IV|Time ",
+              "Y": "Willis_1979_Adults_IV|ObservedData|Peripheral Venous Blood|Plasma|Diclofenac|Conc ",
+              "CurveOptions": {
+                "Color": "#0000FF",
+                "LegendIndex": 2,
+                "LineStyle": "None",
+                "Symbol": "Circle"
+              }
+            }
+          ],
+          "Name": "Time Profile Analysis",
+          "OriginText": "Diclofenac_new\nIVsim-Adult-Willis-1979\n2020-02-15 18:15"
+        }
+      ]
+    },
+    {
+      "Name": "IVsim-Adult-Mermelstein_2013",
+      "Model": "4Comp",
+      "ObservedData": [
+        "Mermelstein2013_Adults_IV_inf"
+      ],
+      "Solver": {},
+      "OutputSchema": [
+        {
+          "Parameters": [
+            {
+              "Name": "Start time",
+              "Value": 0.0,
+              "Unit": "h"
+            },
+            {
+              "Name": "End time",
+              "Value": 2.0,
+              "Unit": "h"
+            },
+            {
+              "Name": "Resolution",
+              "Value": 20.0,
+              "Unit": "pts/h"
+            }
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Path": "Applications|IV_inf_Adult_Mermelstein_2013|Application_1|ProtocolSchemaItem|Infusion time",
+          "Value": 30.0,
+          "Unit": "min"
+        }
+      ],
+      "OutputSelections": [
+        "Organism|PeripheralVenousBlood|Diclofenac|Plasma (Peripheral Venous Blood)"
+      ],
+      "Individual": "Adult",
+      "Compounds": [
+        {
+          "Name": "Diclofenac",
+          "CalculationMethods": [
+            "Cellular partition coefficient method - Rodgers and Rowland",
+            "Cellular permeability - PK-Sim Standard"
+          ],
+          "Processes": [
+            {
+              "Name": "CYP2C9-CYP2C9",
+              "MoleculeName": "CYP2C9"
+            }
+          ],
+          "Protocol": {
+            "Name": "IV_inf_Adult_Mermelstein_2013"
+          }
+        }
+      ],
+      "HasResults": true,
+      "IndividualAnalyses": [
+        {
+          "Axes": [
+            {
+              "Unit": "h",
+              "Dimension": "Time",
+              "Type": "X",
+              "GridLines": false,
+              "Visible": true,
+              "DefaultColor": "#FFFFFF",
+              "DefaultLineStyle": "None",
+              "Scaling": "Linear",
+              "NumberMode": "Normal"
+            },
+            {
+              "Unit": "µmol/l",
+              "Dimension": "Concentration (molar)",
+              "Type": "Y",
+              "GridLines": false,
+              "Visible": true,
+              "DefaultColor": "#FFFFFF",
+              "DefaultLineStyle": "Solid",
+              "Scaling": "Log",
+              "NumberMode": "Normal"
+            }
+          ],
+          "Curves": [
+            {
+              "Name": "IVsim-Adult-Mermelstein_2013-Diclofenac-Peripheral Venous Blood-Plasma-Concentration",
+              "X": "Time",
+              "Y": "IVsim-Adult-Mermelstein_2013|Organism|PeripheralVenousBlood|Diclofenac|Plasma (Peripheral Venous Blood)",
+              "CurveOptions": {
+                "Color": "#FF0000",
+                "LegendIndex": 1
+              }
+            },
+            {
+              "Name": "Mermelstein2013_Adults_IV_inf-Diclofenac-Peripheral Venous Blood-Plasma-Conc ",
+              "X": "Mermelstein2013_Adults_IV_inf|Time ",
+              "Y": "Mermelstein2013_Adults_IV_inf|ObservedData|Peripheral Venous Blood|Plasma|Diclofenac|Conc ",
+              "CurveOptions": {
+                "Color": "#0000FF",
+                "LegendIndex": 2,
+                "LineStyle": "None",
+                "Symbol": "Circle"
+              }
+            }
+          ],
+          "Name": "Time Profile Analysis",
+          "OriginText": "Diclofenac_new\nIVsim-Adult-Mermelstein_2013\n2020-02-15 18:15"
+        }
+      ]
+    }
+  ],
+  "ObservedData": [
+    {
+      "Name": "Mermelstein2013_Adults_IV_inf",
+      "ExtendedProperties": [
+        {
+          "Name": "Source",
+          "Value": "C:\\Egnyte\\Private\\esther.yun\\Diclofenac\\Observed_data\\Mermelstein_2013_adult_diclofenac.xlsx.TimeAdjusted"
+        },
+        {
+          "Name": "File",
+          "Value": "Mermelstein_2013_adult_diclofenac"
+        },
+        {
+          "Name": "Sheet",
+          "Value": "TimeAdjusted"
+        },
+        {
+          "Name": "Molecule",
+          "Value": "Diclofenac"
+        },
+        {
+          "Name": "Species",
+          "Value": "Human"
+        },
+        {
+          "Name": "Organ",
+          "Value": "Peripheral Venous Blood"
+        },
+        {
+          "Name": "Compartment",
+          "Value": "Plasma"
+        }
+      ],
+      "Columns": [
+        {
+          "Name": "Conc ",
+          "QuantityInfo": {
+            "Name": "Conc ",
+            "Path": "Mermelstein2013_Adults_IV_inf|ObservedData|Peripheral Venous Blood|Plasma|Diclofenac|Conc "
+          },
+          "DataInfo": {
+            "Origin": "Observation",
+            "AuxiliaryType": "Undefined",
+            "Date": "2018-02-28T19:24:56.259162-05:00",
+            "Source": "Mermelstein_2013_adult_diclofenac.TimeAdjusted.Conc [ng/mL]",
+            "MolWeight": 298.147
+          },
+          "Values": [
+            1.13030243,
+            2.4151094,
+            3.57111859,
+            4.80292654,
+            5.67466354,
+            3.899931,
+            2.587655,
+            1.96954846,
+            1.55718374,
+            1.22193909,
+            1.01531613,
+            0.7292821,
+            0.4947496,
+            0.337337255,
+            0.282663733
+          ],
+          "Dimension": "Concentration (mass)",
+          "Unit": "mg/l"
+        }
+      ],
+      "BaseGrid": {
+        "Name": "Time ",
+        "QuantityInfo": {
+          "Name": "Time ",
+          "Path": "Mermelstein2013_Adults_IV_inf|Time ",
+          "Type": "Time"
+        },
+        "DataInfo": {
+          "Origin": "BaseGrid",
+          "AuxiliaryType": "Undefined",
+          "Date": "2018-02-28T19:24:56.259162-05:00",
+          "Source": "Mermelstein_2013_adult_diclofenac.TimeAdjusted.Time [min]"
+        },
+        "Values": [
+          0.05,
+          0.1,
+          0.166666672,
+          0.333333343,
+          0.5,
+          0.5833333,
+          0.6666667,
+          0.75,
+          0.8333333,
+          0.9166667,
+          1.0,
+          1.25,
+          1.5,
+          1.75,
+          2.0
+        ],
+        "Dimension": "Time",
+        "Unit": "h"
+      }
+    },
+    {
+      "Name": "Willis_1979_Adults_IV",
+      "ExtendedProperties": [
+        {
+          "Name": "Source",
+          "Value": "C:\\Egnyte\\Private\\esther.yun\\Diclofenac\\Observed_data\\Willis_1979_adults_diclofenac.xlsx.TimepointAdjusted"
+        },
+        {
+          "Name": "File",
+          "Value": "Willis_1979_adults_diclofenac"
+        },
+        {
+          "Name": "Sheet",
+          "Value": "TimepointAdjusted"
+        },
+        {
+          "Name": "Molecule",
+          "Value": "Diclofenac"
+        },
+        {
+          "Name": "Species",
+          "Value": "Human"
+        },
+        {
+          "Name": "Organ",
+          "Value": "Peripheral Venous Blood"
+        },
+        {
+          "Name": "Compartment",
+          "Value": "Plasma"
+        }
+      ],
+      "Columns": [
+        {
+          "Name": "Conc ",
+          "QuantityInfo": {
+            "Name": "Conc ",
+            "Path": "Willis_1979_Adults_IV|ObservedData|Peripheral Venous Blood|Plasma|Diclofenac|Conc "
+          },
+          "DataInfo": {
+            "Origin": "Observation",
+            "AuxiliaryType": "Undefined",
+            "Date": "2018-02-28T18:24:20.5406145-05:00",
+            "Source": "Willis_1979_adults_diclofenac.TimepointAdjusted.Conc [ug/mL]",
+            "MolWeight": 298.147
+          },
+          "Values": [
+            7.88660765,
+            4.09321928,
+            2.47661638,
+            1.67889369,
+            1.2042079,
+            0.686064363,
+            0.426578939,
+            0.252354115,
+            0.14278397
+          ],
+          "Dimension": "Concentration (mass)",
+          "Unit": "mg/l"
+        }
+      ],
+      "BaseGrid": {
+        "Name": "Time ",
+        "QuantityInfo": {
+          "Name": "Time ",
+          "Path": "Willis_1979_Adults_IV|Time ",
+          "Type": "Time"
+        },
+        "DataInfo": {
+          "Origin": "BaseGrid",
+          "AuxiliaryType": "Undefined",
+          "Date": "2018-02-28T18:24:20.5406145-05:00",
+          "Source": "Willis_1979_adults_diclofenac.TimepointAdjusted.Time [min]"
+        },
+        "Values": [
+          0.0833333358,
+          0.166666672,
+          0.25,
+          0.333333343,
+          0.5,
+          0.75,
+          1.0,
+          1.5,
+          2.0
+        ],
+        "Dimension": "Time",
+        "Unit": "h"
+      }
+    }
+  ]
+}
